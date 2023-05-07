@@ -59,5 +59,23 @@ const gpx2img = {
       }
 
   },
+
+  downloadImg: function (){
+    leafletImage(this.mymap, function(err, canvas) {
+    // now you have canvas
+    // example thing to do with that canvas:
+    var img = document.createElement('img');
+    //var dimensions = map.getSize();
+    //img.width = dimensions.x;
+    //img.height = dimensions.y;
+    img.src = canvas.toDataURL();
+    const link = document.createElement('a');
+    link.download = 'img';
+    link.href = img;
+    document.body.appendChild(link);
+    link.click();
+    })
+  },
+
 }
 
